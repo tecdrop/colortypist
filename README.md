@@ -1,16 +1,56 @@
 # Colortypist
 
-A new Flutter project.
+[![Made with Flutter](https://img.shields.io/badge/Made%20with-Flutter-%2302569B)](https://flutter.dev/)
+![Platform](https://img.shields.io/badge/platform-android%2C%20web-lightgrey)
+[![Build Flutter Web](https://github.com/tecdrop/colortypist/actions/workflows/build-flutter-web.yml/badge.svg)](https://github.com/tecdrop/colortypist/actions/workflows/build-flutter-web.yml)
+[![Github Code Size](https://img.shields.io/github/languages/code-size/tecdrop/colortypist)](https://github.com/tecdrop/colortypist)
+[![GitHub Commits](https://badgen.net/github/commits/tecdrop/colortypist/main)](https://github.com/tecdrop/colortypist/commits/main)
+[![GitHub License](https://img.shields.io/github/license/tecdrop/colortypist)](https://github.com/tecdrop/colortypist/blob/main/LICENSE)
+
+Introducing the Colortypist! Finally, an app that lets you see the colors you're typing in real-time!
+
+With Colortypist, you can type in a color by its name or code and see it fill your entire screen in real-time while you type. Colortypist lets you play around with colors, learn and practice color names and formats, and get inspiration for anything that's related to colors.
+
+Colortypist is a nice tool for anyone who is interested in colors and color theory. The app is great for artists and designers who need to find the right color for their work. It's also a great tool for teachers who want to help students learn color names, practice correct spelling, and understand color codes and formats better. It's fun and addictive, making it a great way to introduce color to children.
+
+You can reuse, copy, and share your favorite colors with Colortypist, or you can look up more details about them online.
+
+Colortypist is the perfect tool for anyone who wants to add a little color to their screens. Literally.
+
+## How to Run the App
+
+| Platform  | Options |
+| ------------- | ------------- |
+| Android  | [Install from Google Play](https://play.google.com/store/apps/details?id=com.tecdrop.colortypist) <br> [Download APK from GitHub Releases](https://github.com/tecdrop/colortypist/releases)|
+| Any  | [Run the web app in your browser](https://colortypist.tecdrop.com/)  |
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. If you don't have the Flutter SDK installed, please visit the official [Flutter](https://docs.flutter.dev/get-started/install) website.
 
-A few resources to get you started if this is your first Flutter project:
+2. Fetch the latest source code from the main branch.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+``` 
+git clone https://github.com/tecdrop/colortypist.git
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+3. Run the app with Visual Studio Code or Android Studio, or using the command line.
+
+``` 
+flutter pub get
+flutter run
+```
+
+## Built With
+
+- [Flutter](https://flutter.dev/) - Build apps for any screen.
+- [Visual Studio Code](https://code.visualstudio.com/) - Code editing. Redefined.
+- [GitHub Pages](https://pages.github.com/) - Websites for you and your projects, hosted directly from your GitHub repository.
+
+## Contribute
+
+If you have an issue or found a bug, please raise a GitHub issue [here](https://github.com/tecdrop/colortypist/issues). Pull requests are also welcome.
+
+## License
+
+Colortypist is licensed under the [MIT license](LICENSE).
