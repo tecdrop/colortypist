@@ -60,9 +60,21 @@ flutter run
 - [Visual Studio Code](https://code.visualstudio.com/) - Code editing. Redefined.
 - [GitHub Pages](https://pages.github.com/) - Websites for you and your projects, hosted directly from your GitHub repository.
 
+### Plugins
+
+- [from_css_color](https://pub.dev/packages/from_css_color) - Creates Color instance from CSS color string.
+- [shared_preferences](https://pub.dev/packages/shared_preferences) - Wraps platform-specific persistent storage for simple data.
+- [url_launcher](https://pub.dev/packages/url_launcher) - A Flutter plugin for launching a URL.
+- [share_plus](https://pub.dev/packages/share_plus) - A Flutter plugin to share content from your Flutter app.
+
 ## Contribute
 
 If you have an issue or found a bug, please raise a GitHub issue [here](https://github.com/tecdrop/colortypist/issues). Pull requests are also welcome.
+
+## Acknowledgments
+
+- The basic color names and values are imported from the [12 RGB C O L O R S](https://www.1728.org/RGB.htm) article
+- The extended color names and values are imported from Randall Munroe's [xkcd color name survey](https://xkcd.com/color/rgb/)
 
 ## License
 
