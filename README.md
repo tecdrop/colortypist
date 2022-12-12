@@ -17,6 +17,19 @@ You can reuse, copy, and share your favorite colors with Colortypist, or you can
 
 Colortypist is the perfect tool for anyone who wants to add a little color to their screens. Literally.
 
+## Screenshots
+
+<p>
+  <img width="200" src="repo-assets/screenshots/colortypist-android-screenshot-phone-type-colors.png" alt="Type colors">
+  <img width="200" src="repo-assets/screenshots/colortypist-android-screenshot-phone-fill-your-screen.png" alt="Colors fill your screen">
+  <img width="200" src="repo-assets/screenshots/colortypist-android-screenshot-phone-real-time.png" alt="In real-time">
+  <img width="200" src="repo-assets/screenshots/colortypist-android-screenshot-phone-learn-color-names.png" alt="Learn color names">
+  <img width="200" src="repo-assets/screenshots/colortypist-android-screenshot-phone-web-colors.png" alt="Try web colors">
+  <img width="200" src="repo-assets/screenshots/colortypist-android-screenshot-phone-color-information.png" alt="Copy and reuse colors">
+  <img width="200" src="repo-assets/screenshots/colortypist-android-screenshot-phone-preview-colors.png" alt="Preview colors">
+  <img width="200" src="repo-assets/screenshots/colortypist-android-screenshot-phone-type-anything.png" alt="Bonus: text to color">
+</p>
+
 ## How to Run the App
 
 | Platform  | Options |
