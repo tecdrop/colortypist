@@ -6,6 +6,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../common/custom_icons.dart' as custom_icons;
 import '../common/strings.dart' as strings;
 import '../models/color_result.dart';
 import 'app_transparency_grid.dart';
@@ -116,6 +117,8 @@ class AppDrawer extends StatelessWidget {
             item: AppDrawerItems.help,
           ),
 
+          const Divider(),
+
           // The Rate App drawer item
           _buildItem(
             context,
@@ -124,14 +127,12 @@ class AppDrawer extends StatelessWidget {
             item: AppDrawerItems.rateApp,
           ),
 
-          const Divider(),
-
-          // The View Source drawer item
+          // The Star on GitHub drawer item
           _buildItem(
             context,
-            icon: Icons.source_outlined,
-            title: strings.viewSourceDrawer,
-            subtitle: strings.viewSourceDrawerSubtitle,
+            icon: custom_icons.github,
+            title: strings.starOnGitHubTitle,
+            subtitle: strings.starOnGitHubSubtitle,
             item: AppDrawerItems.viewSource,
           ),
         ],

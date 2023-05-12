@@ -2,13 +2,10 @@
 // Use of this source code is governed by an MIT-style license that can be
 // found in the LICENSE file.
 
-// cspell:ignore LTRB
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:share_plus/share_plus.dart';
-import 'package:tuple/tuple.dart';
 
 import '../common/constants.dart' as constants;
 import '../common/strings.dart' as strings;
@@ -38,7 +35,7 @@ class ColorInfoScreen extends StatefulWidget {
 
 class _ColorInfoScreenState extends State<ColorInfoScreen> {
   /// The color information list.
-  late final List<Tuple2<String, String>> _infoList;
+  late final List<({String name, String value})> _infoList;
 
   /// The index of the currently selected information item in the list view.
   int _selectedIndex = 0;
@@ -53,19 +50,19 @@ class _ColorInfoScreenState extends State<ColorInfoScreen> {
   /// Copies the currently selected color information item to the Clipboard, and shows a
   /// confirmation SnackBar.
   void _onCopyPressed() {
-    final String value = _infoList[_selectedIndex].item2;
+    final String value = _infoList[_selectedIndex].value;
     utils.copyToClipboard(context, value);
   }
 
   /// Shares the currently selected color information item via the platform's share dialog.
   void _onSharePressed() {
-    final String value = _infoList[_selectedIndex].item2;
+    final String value = _infoList[_selectedIndex].value;
     Share.share(value, subject: strings.appName);
   }
 
   /// Performs a web search for the currently selected color information item.
   void _onSearchPressed() {
-    final String value = _infoList[_selectedIndex].item2;
+    final String value = _infoList[_selectedIndex].value;
     final String url = constants.onlineSearchUrl + Uri.encodeComponent(value);
     utils.launchUrlExternal(context, url);
   }
@@ -98,11 +95,11 @@ class _ColorInfoScreenState extends State<ColorInfoScreen> {
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
                     title: Text(
-                      _infoList[index].item2,
+                      _infoList[index].value,
                       style: theme.listTileTitleStyle(context, textColor: foregroundColor),
                     ),
                     subtitle: Text(
-                      _infoList[index].item1,
+                      _infoList[index].name,
                       style: theme.listTileSubtitleStyle(context, textColor: foregroundColor),
                     ),
                     textColor: foregroundColor,
@@ -123,16 +120,16 @@ class _ColorInfoScreenState extends State<ColorInfoScreen> {
   }
 
   /// Builds the color information list.
-  static List<Tuple2<String, String>> _buildInfoList(ColorResult colorResult) {
-    final List<Tuple2<String, String>> infoList = [];
+  static List<({String name, String value})> _buildInfoList(ColorResult colorResult) {
+    final List<({String name, String value})> infoList = [];
 
     // We should never have a null color here, but just in case check and return an empty list
     if (colorResult.color == null) {
       return infoList;
     }
 
-    // Simply a convenience function that adds the given key/value info to the list.
-    void addInfoItem(String key, String value) => infoList.add(Tuple2(key, value));
+    // Simply a convenience function that adds the given name/value info to the list.
+    void addInfoItem(String name, String value) => infoList.add((name: name, value: value));
 
     final Color color = colorResult.color!;
     if (colorResult.name != null) {

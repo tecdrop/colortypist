@@ -2,11 +2,7 @@
 // Use of this source code is governed by an MIT-style license that can be
 // found in the LICENSE file.
 
-// cspell:ignore rgba
-
 import 'package:flutter/material.dart';
-
-import 'package:tuple/tuple.dart';
 
 import '../common/strings.dart' as strings;
 import '../common/theme.dart' as theme;
@@ -26,13 +22,13 @@ class ColorReferenceList extends StatelessWidget {
   final void Function(String itemText)? onItemTap;
 
   /// The list of sample color formats to display.
-  static const List<Tuple2<Color, String>> _colorFormats = [
-    Tuple2(Color(0xFFF97A80), '#F97A80'),
-    Tuple2(Color(0x7FF97A80), '#F97A807F'),
-    Tuple2(Color(0xFFFCEF01), 'rgb(252, 239, 1)'),
-    Tuple2(Color(0x66FCEF01), 'rgba(252, 239, 1, 0.4)'),
-    Tuple2(Color(0xFF6626FF), 'rgb(40%, 15%, 100%)'),
-    Tuple2(Color(0xFF00FF7F), 'hsl(150, 100%, 50%)'),
+  static const List<(Color, String)> _colorFormats = [
+    (Color(0xFFF97A80), '#F97A80'),
+    (Color(0x7FF97A80), '#F97A807F'),
+    (Color(0xFFFCEF01), 'rgb(252, 239, 1)'),
+    (Color(0x66FCEF01), 'rgba(252, 239, 1, 0.4)'),
+    (Color(0xFF6626FF), 'rgb(40%, 15%, 100%)'),
+    (Color(0xFF00FF7F), 'hsl(150, 100%, 50%)'),
   ];
 
   /// The list of named colors to display.
@@ -55,8 +51,8 @@ class ColorReferenceList extends StatelessWidget {
         if (index < _colorFormats.length) {
           // Display a color format example.
           return _ColorReferenceItem(
-            color: _colorFormats[index].item1,
-            text: _colorFormats[index].item2,
+            color: _colorFormats[index].$1,
+            text: _colorFormats[index].$2,
             showColorCode: false,
             onTap: onItemTap,
           );

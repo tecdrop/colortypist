@@ -4,9 +4,11 @@
     "Colortypist",
     "Gainsboro",
     "Reparse",
+    "rgba",
     "Tecdrop",
     "toggleable",
     "xkcd"
   ],
-  "dart.lineLength": 100
+  "dart.lineLength": 100,
+  "editor.minimap.enabled": false
 }

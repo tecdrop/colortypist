@@ -48,8 +48,8 @@ const String settingsDrawer = 'Settings';
 const String rateAppDrawer = 'Rate App';
 const String helpDrawer = 'Help & Support';
 
-const String viewSourceDrawer = 'View App Source';
-const String viewSourceDrawerSubtitle = 'Yes, $appName is open source!';
+const String starOnGitHubTitle = 'Star on GitHub';
+const String starOnGitHubSubtitle = 'Yes, $appName is open source!';
 
 // -----------------------------------------------------------------------------------------------
 // Typist Color Screen(s)

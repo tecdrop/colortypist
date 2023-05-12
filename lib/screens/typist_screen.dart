@@ -35,12 +35,13 @@ class _TypistScreenState extends State<TypistScreen> {
   void initState() {
     super.initState();
 
+    // Use the controller to set the initial value.
+    _textFieldController.text = settings.typeColorText;
+
+    // Listen for changes in the text field and update the color result accordingly.
     _textFieldController.addListener(() {
       _onTypistTextFieldChanged(_textFieldController.text);
     });
-
-    // Use the controller to set the initial value.
-    _textFieldController.text = settings.typeColorText;
   }
 
   @override
