@@ -35,19 +35,16 @@ const Map<NamedColorType, String> namedColorTypeTitle = {
 // Drawer items
 // -----------------------------------------------------------------------------------------------
 
+const String setWallpaperDrawerTitle = 'Set A Color Wallpaper';
+const String setWallpaperDrawerSubtitle = 'Use RGB Color Wallpaper Pro\nand support our free apps!';
 const String typeColorDrawerTitle = 'Type Colors';
 const String typeColorDrawerSubtitle = 'Type color names or codes';
 const String colorReferenceDrawer = 'Color Reference';
-
 const String previewColorDrawer = 'Preview Color';
 const String colorInfoDrawer = 'Color Information';
-const String setWallpaperDrawerTitle = 'Set Color Wallpaper';
-const String setWallpaperDrawerSubtitle = 'Using RGB Color Wallpaper Pro';
-
 const String settingsDrawer = 'Settings';
 const String rateAppDrawer = 'Rate App';
 const String helpDrawer = 'Help & Support';
-
 const String starOnGitHubTitle = 'Star on GitHub';
 const String starOnGitHubSubtitle = 'Yes, $appName is open source!';
 

@@ -52,6 +52,17 @@ class AppDrawer extends StatelessWidget {
             title: strings.appName,
           ),
 
+          // The Set Color Wallpaper drawer item
+          ListTile(
+            contentPadding: const EdgeInsets.all(16.0),
+            tileColor: Theme.of(context).colorScheme.onPrimary.withOpacity(0.075),
+            leading: const Icon(Icons.wallpaper),
+            title: const Text(strings.setWallpaperDrawerTitle),
+            subtitle: const Text(strings.setWallpaperDrawerSubtitle),
+            isThreeLine: true,
+            onTap: () => onItemTap?.call(AppDrawerItems.setWallpaper),
+          ),
+
           // The Type Color drawer item
           _buildItem(
             context,
@@ -89,18 +100,6 @@ class AppDrawer extends StatelessWidget {
             enabled: colorResult.color != null,
           ),
 
-          // The Set Color Wallpaper drawer item
-          _buildItem(
-            context,
-            icon: Icons.wallpaper,
-            title: strings.setWallpaperDrawerTitle,
-            subtitle: strings.setWallpaperDrawerSubtitle,
-            item: AppDrawerItems.setWallpaper,
-            enabled: colorResult.color != null,
-          ),
-
-          const Divider(),
-
           // The Settings drawer item
           _buildItem(
             context,
@@ -109,6 +108,8 @@ class AppDrawer extends StatelessWidget {
             item: AppDrawerItems.settings,
           ),
 
+          const Divider(),
+
           // The Online Help drawer item
           _buildItem(
             context,
@@ -116,8 +117,6 @@ class AppDrawer extends StatelessWidget {
             title: strings.helpDrawer,
             item: AppDrawerItems.help,
           ),
-
-          const Divider(),
 
           // The Rate App drawer item
           _buildItem(
@@ -177,6 +176,7 @@ class _AppDrawerHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return DrawerHeader(
       padding: EdgeInsets.zero,
+      margin: EdgeInsets.zero,
 
       // The background of the drawer header should be exactly the same as the background of the
       // typist screen, including the transparency grid for invalid or partially transparent colors
