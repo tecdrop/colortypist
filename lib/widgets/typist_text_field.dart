@@ -24,13 +24,17 @@ class TypistTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // An opinionated minimum width for a large screen.
+    final bool isLargeScreen = MediaQuery.of(context).size.width > 1280;
+
     // A simple underline border.
     final InputBorder border = UnderlineInputBorder(
       borderSide: BorderSide(color: foregroundColor, width: 2.0),
     );
 
-    return Padding(
+    return Container(
       padding: const EdgeInsets.symmetric(horizontal: 32.0),
+      constraints: BoxConstraints(maxWidth: isLargeScreen ? 768.0 : 512.0),
       child: TextField(
         controller: controller,
         autofocus: true,

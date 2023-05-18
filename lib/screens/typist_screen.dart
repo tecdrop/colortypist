@@ -104,6 +104,17 @@ class _TypistScreenState extends State<TypistScreen> {
   /// Executes the action of the selected drawer item.
   Future<void> _onDrawerItemTap(AppDrawerItems item) async {
     switch (item) {
+      // Launch the external Set Wallpaper url
+      case AppDrawerItems.setWallpaper:
+        Navigator.pop(context);
+        // utils.launchUrlExternal(context, constants.setWallpaperUrlAndroid);
+        utils.launchUrlExternal(
+            context,
+            Theme.of(context).platform == TargetPlatform.android
+                ? constants.setWallpaperUrlAndroid
+                : constants.setWallpaperUrl);
+        break;
+
       // Navigate to the Type Color screen by replacing the current screen
       case AppDrawerItems.typeColor:
         Navigator.pop(context);
@@ -126,12 +137,6 @@ class _TypistScreenState extends State<TypistScreen> {
       case AppDrawerItems.colorInfo:
         Navigator.pop(context);
         _gotoColorInfoScreen();
-        break;
-
-      // Launch the external Set Wallpaper url
-      case AppDrawerItems.setWallpaper:
-        Navigator.pop(context);
-        utils.launchUrlExternal(context, constants.setWallpaperUrl);
         break;
 
       // Navigate to the Settings screen

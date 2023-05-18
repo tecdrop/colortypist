@@ -118,13 +118,14 @@ class AppDrawer extends StatelessWidget {
             item: AppDrawerItems.help,
           ),
 
-          // The Rate App drawer item
-          _buildItem(
-            context,
-            icon: Icons.star_rate_outlined,
-            title: strings.rateAppDrawer,
-            item: AppDrawerItems.rateApp,
-          ),
+          // The Rate App drawer item (currently shown only on Android)
+          if (Theme.of(context).platform == TargetPlatform.android)
+            _buildItem(
+              context,
+              icon: Icons.star_rate_outlined,
+              title: strings.rateAppDrawer,
+              item: AppDrawerItems.rateApp,
+            ),
 
           // The Star on GitHub drawer item
           _buildItem(
