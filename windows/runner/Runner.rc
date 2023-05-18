@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.tecdrop" "\0"
-            VALUE "FileDescription", "colortypist" "\0"
+            VALUE "CompanyName", "Tecdrop" "\0"
+            VALUE "FileDescription", "Colortypist Cross-Platform (Windows)" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "colortypist" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.tecdrop. All rights reserved." "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2011-2023 Tecdrop. All rights reserved." "\0"
             VALUE "OriginalFilename", "colortypist.exe" "\0"
-            VALUE "ProductName", "colortypist" "\0"
+            VALUE "ProductName", "Colortypist" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
