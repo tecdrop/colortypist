@@ -2,6 +2,7 @@
   "recommendations": [
     "dart-code.dart-code",
     "dart-code.flutter",
-    "nhoizey.gremlins"
+    "nhoizey.gremlins",
+    "stkb.rewrap"
   ]
 }

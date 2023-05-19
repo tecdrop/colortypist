@@ -22,12 +22,13 @@ ArchitecturesAllowed=x64 arm64 ia64
 ArchitecturesInstallIn64BitMode=x64 arm64 ia64
 DefaultDirName={autopf}\Tecdrop\{#MyAppName}
 DisableProgramGroupPage=yes
-LicenseFile=Input\LICENSE.txt
+LicenseFile=Input\LICENSE
+InfoBeforeFile=Input\README
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=Output
-OutputBaseFilename=ColortypistSetup
+OutputBaseFilename=ColortypistInstaller
 Compression=lzma2/ultra
 SolidCompression=yes
 UninstallDisplayIcon={app}\{#MyAppExeName}
