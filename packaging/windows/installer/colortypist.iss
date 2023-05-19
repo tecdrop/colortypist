@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Colortypist"
-#define MyAppVersion "1.3.0"
+#define MyAppVersion "5.0.0"
 #define MyAppPublisher "Tecdrop"
 #define MyAppURL "https://www.tecdrop.com"
 #define MyAppExeName "colortypist.exe"
@@ -13,7 +13,7 @@
 AppId={{86D31487-798C-41B2-8B6E-2229F0FB9077}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
-;AppVerName={#MyAppName} {#MyAppVersion}
+AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
 AppSupportURL={#MyAppURL}
@@ -32,6 +32,7 @@ OutputBaseFilename=ColortypistInstaller
 Compression=lzma2/ultra
 SolidCompression=yes
 UninstallDisplayIcon={app}\{#MyAppExeName}
+UninstallDisplayName={#MyAppName}
 WizardStyle=modern
 
 [Languages]

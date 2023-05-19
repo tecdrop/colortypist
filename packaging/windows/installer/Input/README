@@ -1,5 +1,5 @@
 Welcome to Colortypist
-----------------------
+----------------------------------------
 
 Imagine this: you open an app and type a color name or code. Instantly, your
 screen is filled with that color. It's like magic, but it's not. It's
@@ -21,7 +21,7 @@ personal color zen space, free of distractions.
 
 Colortypist is not just an Android and Windows app. It's also a progressive web
 application, so it runs smoothly in your web browser, no matter the operating
-system—Android, ChromeOS, iOS, Linux, macOS, Windows, you name it. The best
+system - Android, ChromeOS, iOS, Linux, macOS, Windows, you name it. The best
 part? Colortypist is open-source! This means you can dive into its code, give us
 a star on GitHub, or even join us in developing it further.
 
@@ -31,14 +31,14 @@ come alive with the colors you type!
 
 
 The Latest Version
-------------------
+----------------------------------------
 
 Details of the latest version can be found on the Colortypist download page
 <https://www.tecdrop.com/colortypist/download/>.
 
 
 Support and More Information
-----------------------------
+----------------------------------------
 
 For any assistance, please visit our support page at
 <https://www.tecdrop.com/support/>. For more detailed information about
@@ -47,7 +47,7 @@ Colortypist, visit the homepage of the app at
 
 
 Open-Source and Contributing
-----------------------------
+----------------------------------------
 
 Colortypist is open-source software, licensed under the MIT License. We warmly
 welcome contributors who want to help enhance Colortypist. Visit our GitHub
@@ -56,15 +56,9 @@ code, star the repo, or contribute.
 
 
 Copyright and License
----------------------
+----------------------------------------
 
 Copyright (c) 2011-2023 Tecdrop
 
 Colortypist is licensed under the MIT License. Check out the LICENSE file in
 this directory for more information.
-
-
-Homepage
---------
-
-<https://www.tecdrop.com/colortypist/>
