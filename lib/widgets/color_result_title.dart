@@ -11,12 +11,16 @@ import '../utils/color_utils.dart' as color_utils;
 /// A simple widget that displays a color result as a title.
 ///
 /// If the color result is a valid color, displays the color name if available, or the hex color
-/// code. If the color result is not a valid color, displays a specified hint text.
+/// code. The color result title is tappable and can display a tooltip.
+///
+/// If the color result is not a valid color, displays a specified hint text.
 class ColorResultTitle extends StatelessWidget {
   const ColorResultTitle({
     super.key,
     required this.colorResult,
     required this.noColorHint,
+    this.tooltip,
+    this.onResultTap,
   });
 
   /// The color result to display.
@@ -25,20 +29,36 @@ class ColorResultTitle extends StatelessWidget {
   /// The title to display when there is no color.
   final String noColorHint;
 
+  /// The text to display in the tooltip.
+  final String? tooltip;
+
+  /// Called when the user taps on the title when it displays a valid color.
+  final GestureTapCallback? onResultTap;
+
   @override
   Widget build(BuildContext context) {
     if (colorResult.color != null) {
       final String title = colorResult.name ?? color_utils.toHexString(colorResult.color!);
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(strings.yourColorIs, style: Theme.of(context).textTheme.bodySmall),
-          Text(title, style: Theme.of(context).appBarTheme.titleTextStyle),
-        ],
+      return InkWell(
+        onTap: onResultTap,
+        child: Tooltip(
+          message: tooltip,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(strings.yourColorIs, style: Theme.of(context).textTheme.bodySmall),
+                Text(title, style: Theme.of(context).appBarTheme.titleTextStyle),
+              ],
+            ),
+          ),
+        ),
       );
     }
 
+    // If the color is not valid, display the hint text as a title.
     return Text(noColorHint);
   }
 }

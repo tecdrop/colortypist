@@ -54,6 +54,7 @@ const String starOnGitHubSubtitle = 'Yes, $appName is open source!';
 
 const String yourColorIs = 'Your color is';
 
+const String colorResultTooltip = 'Color information';
 const String infoActionTooltip = 'Color information';
 const String referenceActionTooltip = 'Color reference';
 

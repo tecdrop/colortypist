@@ -92,6 +92,9 @@ class _TypistScreenState extends State<TypistScreen> {
   /// Perform the actions of the app bar.
   void _onAppBarAction(_AppBarActions action) {
     switch (action) {
+      case _AppBarActions.title:
+        _gotoColorInfoScreen();
+        break;
       case _AppBarActions.colorInfo:
         _gotoColorInfoScreen();
         break;
@@ -206,6 +209,7 @@ class _TypistScreenState extends State<TypistScreen> {
 
 /// The available actions that can be performed from the app bar.
 enum _AppBarActions {
+  title,
   colorInfo,
   colorReference,
 }
@@ -230,9 +234,12 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       // Display the color result in the title
+      titleSpacing: 0.0,
       title: ColorResultTitle(
         colorResult: colorResult,
         noColorHint: strings.noColorHint,
+        tooltip: strings.colorResultTooltip,
+        onResultTap: () => onAppBarAction?.call(_AppBarActions.title),
       ),
       actions: <Widget>[
         // The color info action which navigates to the Color Information screen. This action is
