@@ -194,7 +194,7 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.search_outlined),
-          tooltip: strings.infoActionTooltip,
+          tooltip: strings.searchTooltip,
           onPressed: onSearchPressed,
         ),
       ],

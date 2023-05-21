@@ -10,6 +10,7 @@ import '../common/settings.dart' as settings;
 import '../common/strings.dart' as strings;
 import '../models/color_result.dart';
 import '../services/color_parser.dart';
+import '../services/color_shuffler.dart';
 import '../widgets/app_drawer.dart';
 import '../widgets/app_transparency_grid.dart';
 import '../widgets/color_result_title.dart';
@@ -92,12 +93,17 @@ class _TypistScreenState extends State<TypistScreen> {
   /// Perform the actions of the app bar.
   void _onAppBarAction(_AppBarActions action) {
     switch (action) {
+      // Navigate to the Color Information screen
       case _AppBarActions.title:
         _gotoColorInfoScreen();
         break;
-      case _AppBarActions.colorInfo:
-        _gotoColorInfoScreen();
+
+      // Shuffle the color by automatically typing a random color name or code
+      case _AppBarActions.shuffleColor:
+        _textFieldController.text = getRandomColorNameOrCode(settings.namedColorType);
         break;
+
+      // Navigate to the Color Reference screen
       case _AppBarActions.colorReference:
         _gotoColorReferenceScreen();
         break;
@@ -110,7 +116,6 @@ class _TypistScreenState extends State<TypistScreen> {
       // Launch the external Set Wallpaper url
       case AppDrawerItems.setWallpaper:
         Navigator.pop(context);
-        // utils.launchUrlExternal(context, constants.setWallpaperUrlAndroid);
         utils.launchUrlExternal(
             context,
             Theme.of(context).platform == TargetPlatform.android
@@ -210,7 +215,7 @@ class _TypistScreenState extends State<TypistScreen> {
 /// The available actions that can be performed from the app bar.
 enum _AppBarActions {
   title,
-  colorInfo,
+  shuffleColor,
   colorReference,
 }
 
@@ -233,7 +238,8 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      // Display the color result in the title
+      // Display the color result in the title; navigates to the Color Information screen when
+      // tapped, if the user has entered a valid color
       titleSpacing: 0.0,
       title: ColorResultTitle(
         colorResult: colorResult,
@@ -242,14 +248,11 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
         onResultTap: () => onAppBarAction?.call(_AppBarActions.title),
       ),
       actions: <Widget>[
-        // The color info action which navigates to the Color Information screen. This action is
-        // only enabled if the user has entered a valid color.
+        // The color shuffle action which automatically types a random color.
         IconButton(
-          icon: const Icon(Icons.info_outline),
-          tooltip: strings.infoActionTooltip,
-          onPressed: colorResult.color != null
-              ? () => onAppBarAction?.call(_AppBarActions.colorInfo)
-              : null,
+          icon: const Icon(Icons.shuffle_outlined),
+          tooltip: strings.shuffleActionTooltip,
+          onPressed: () => onAppBarAction?.call(_AppBarActions.shuffleColor),
         ),
 
         // The color reference action which navigates to the Color Reference screen.

@@ -55,7 +55,7 @@ const String starOnGitHubSubtitle = 'Yes, $appName is open source!';
 const String yourColorIs = 'Your color is';
 
 const String colorResultTooltip = 'Color information';
-const String infoActionTooltip = 'Color information';
+const String shuffleActionTooltip = 'Shuffle color';
 const String referenceActionTooltip = 'Color reference';
 
 // -----------------------------------------------------------------------------------------------
@@ -75,7 +75,7 @@ const String brightnessInfo = 'Brightness';
 
 const String copyTooltip = 'Copy to clipboard';
 const String shareTooltip = 'Share';
-const String searchTooltip = 'Search on the Internet';
+const String searchTooltip = 'Search color on the Internet';
 
 // -----------------------------------------------------------------------------------------------
 // Color Reference Screen
