@@ -15,3 +15,8 @@ x86/
 *.[Cc]ache
 # but keep track of directories ending in .cache
 !*.[Cc]ache/
+
+# https://github.com/flutter/flutter/issues/100291
+flutter/generated_plugin_registrant.cc
+flutter/generated_plugin_registrant.h
+flutter/generated_plugins.cmake
