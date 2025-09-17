@@ -1,10 +1,9 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
-
-// cspell:ignore prefs
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 /// The app settings, loaded from and saved to persistent storage.
+library;
 
 import 'package:shared_preferences/shared_preferences.dart';
 

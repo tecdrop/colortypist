@@ -1,6 +1,6 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -179,8 +179,7 @@ class _ColorInfoScreenState extends State<ColorInfoScreen> {
 /// Displays the screen title and the search button.
 class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   const _AppBar({
-    // ignore: unused_element
-    super.key,
+    super.key, // ignore: unused_element_parameter
     this.onSearchPressed,
   });
 

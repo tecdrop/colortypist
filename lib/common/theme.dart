@@ -1,8 +1,9 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 /// The light and dark themes of the app, and various style utility functions.
+library;
 
 import 'package:flutter/material.dart';
 
@@ -40,8 +41,9 @@ ThemeData appTheme(Brightness brightness) {
 
       // So far used for the app bar of the screens that don't have a color background (e.g. the
       // settings screen)
-      primaryContainer:
-          brightness == Brightness.light ? const Color(0xFFF5F5F5) : const Color(0xFF0A0A0A),
+      primaryContainer: brightness == Brightness.light
+          ? const Color(0xFFF5F5F5)
+          : const Color(0xFF0A0A0A),
       onPrimaryContainer: lightBlackDarkWhite,
 
       // So far used for the default color when no valid color was typed, and for the
@@ -69,9 +71,9 @@ TextStyle subtitleStyle(BuildContext context, {Color? textColor}) {
 /// Returns a text style suitable for list tile titles, with the specified text color.
 TextStyle listTileTitleStyle(BuildContext context, {Color? textColor}) {
   return Theme.of(context).textTheme.titleMedium!.copyWith(
-        color: textColor,
-        fontWeight: FontWeight.w500,
-      );
+    color: textColor,
+    fontWeight: FontWeight.w500,
+  );
 }
 
 /// Returns a text style suitable for list tile subtitles, with the specified text color.

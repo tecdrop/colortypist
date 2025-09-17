@@ -1,8 +1,6 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
-
-// cspell:ignore fullscreen
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 import 'package:flutter/material.dart';
 
@@ -188,8 +186,8 @@ class _AppDrawerHeader extends StatelessWidget {
           child: Text(
             title,
             style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: colorResult.contrastColor,
-                ),
+              color: colorResult.contrastColor,
+            ),
           ),
         ),
       ),

@@ -1,10 +1,11 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 /// User interface string constants.
 ///
 /// These are texts that are displayed to the user and can be localized in future versions.
+library;
 
 import 'package:colortypist/models/enums.dart';
 
