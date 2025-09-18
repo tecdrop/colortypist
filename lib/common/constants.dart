@@ -47,3 +47,10 @@ const String viewSourceUrl = 'https://github.com/tecdrop/colortypist';
 
 /// The url that is used to search color information on the web.
 const String onlineSearchUrl = 'https://www.google.com/search?q=';
+
+// -----------------------------------------------------------------------------------------------
+// Other constants
+// -----------------------------------------------------------------------------------------------
+
+/// The color swatch image file name for a given hex code.
+String colorSwatchFileName(String hexCode) => 'colortypist_${hexCode}_color_swatch.png';

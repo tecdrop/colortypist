@@ -17,7 +17,7 @@ class ColorResult {
     this.color,
     required Color primaryColor,
     this.name,
-  }) : contrastColor = color_utils.contrastOf(
+  }) : contrastColor = color_utils.contrastBWColorOf(
          Color.alphaBlend(color ?? primaryColor, primaryColor),
        );
 

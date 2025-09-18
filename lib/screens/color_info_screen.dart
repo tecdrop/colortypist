@@ -2,29 +2,26 @@
 // Use of this source code is governed by an MIT-style license that can be found
 // in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:share_plus/share_plus.dart';
 
 import '../common/constants.dart' as constants;
 import '../common/strings.dart' as strings;
-import '../common/theme.dart' as theme;
 import '../models/color_result.dart';
 import '../utils/color_utils.dart' as color_utils;
 import '../utils/utils.dart' as utils;
 import '../widgets/app_transparency_grid.dart';
-import '../widgets/warning.dart';
+import '../widgets/color_info_list.dart';
+import 'color_preview_screen.dart';
 
-/// The Color Information screen.
+/// The Color Info screen.
 ///
-/// Displays the given color in different formats, and allows the user to copy, share, or
-/// search the Internet for any of the color information.
+/// Displays the given [RandomColor] in different formats, and other color information, and allows
+/// the user to copy or share the information.
 class ColorInfoScreen extends StatefulWidget {
-  const ColorInfoScreen({
-    super.key,
-    required this.colorResult,
-  });
+  const ColorInfoScreen({super.key, required this.colorResult});
 
   /// The color name and code that is displayed in the info screen.
   final ColorResult colorResult;
@@ -34,167 +31,196 @@ class ColorInfoScreen extends StatefulWidget {
 }
 
 class _ColorInfoScreenState extends State<ColorInfoScreen> {
-  /// The color information list.
-  late final List<({String name, String value})> _infoList;
+  late final Color color;
 
-  /// The index of the currently selected information item in the list view.
-  int _selectedIndex = 0;
+  /// The list of color information to display.
+  late final List<({String key, String value})> _infos;
 
-  /// Build the color information list on init state.
+  /// The string representation of the color information for copying or sharing.
+  late final String _infosAsString;
+
   @override
   void initState() {
     super.initState();
-    _infoList = _buildInfoList(widget.colorResult);
-  }
-
-  /// Copies the currently selected color information item to the Clipboard, and shows a
-  /// confirmation SnackBar.
-  void _onCopyPressed() {
-    final String value = _infoList[_selectedIndex].value;
-    utils.copyToClipboard(context, value);
-  }
-
-  /// Shares the currently selected color information item via the platform's share dialog.
-  void _onSharePressed() {
-    final String value = _infoList[_selectedIndex].value;
-    Share.share(value, subject: strings.appName);
-  }
-
-  /// Performs a web search for the currently selected color information item.
-  void _onSearchPressed() {
-    final String value = _infoList[_selectedIndex].value;
-    final String url = constants.onlineSearchUrl + Uri.encodeComponent(value);
-    utils.launchUrlExternal(context, url);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final bool isPortrait = MediaQuery.of(context).size.height >= 500;
 
     // We should never get here with a null color, but just in case use the primary color
-    final Color color = widget.colorResult.color ?? Theme.of(context).colorScheme.primary;
-    final Color foregroundColor = widget.colorResult.contrastColor;
-    final Color selectedTileColor = Color.alphaBlend(foregroundColor.withOpacity(0.25), color);
-    final Color selectedColor = color_utils.contrastOf(selectedTileColor);
+    color = widget.colorResult.color ?? Theme.of(context).colorScheme.primary;
 
-    return AppTransparencyGrid(
-      child: Scaffold(
-        // Fill the color information screen with the current color
-        backgroundColor: color,
+    // Prepare the list of color information to display
+    _infos = [
+      if (widget.colorResult.name != null) ...[
+        (key: strings.colorTitleInfo, value: widget.colorResult.title),
+        (key: strings.colorNameInfo, value: widget.colorResult.name!),
+      ],
+      (key: strings.hexInfo, value: color_utils.toHexString(color)),
+      (key: strings.rgbInfo, value: color_utils.toRGBString(color)),
+      (key: strings.hsvInfo, value: color_utils.toHSVString(color)),
+      (key: strings.hslInfo, value: color_utils.toHSLString(color)),
+      (key: strings.decimalInfo, value: color_utils.toDecimalString(color)),
+      (key: strings.luminanceInfo, value: color_utils.luminanceString(color)),
+      (key: strings.brightnessInfo, value: color_utils.brightnessString(color)),
+    ];
 
-        // The app bar of this screen
-        appBar: _AppBar(
-          onSearchPressed: _onSearchPressed,
-        ),
+    // Prepare the string representation of the color information for copying or sharing
+    _infosAsString = _infos.map((info) => '${info.key}: ${info.value}').join('\n');
+  }
 
-        // The body contains a list view with all the color information items
-        body: widget.colorResult.color == null
-            ? Warning(text: strings.noValidColor, foregroundColor: widget.colorResult.contrastColor)
-            : ListView.builder(
-                itemCount: _infoList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text(
-                      _infoList[index].value,
-                      style: theme.listTileTitleStyle(context, textColor: foregroundColor),
-                    ),
-                    subtitle: Text(
-                      _infoList[index].name,
-                      style: theme.listTileSubtitleStyle(context, textColor: foregroundColor),
-                    ),
-                    textColor: foregroundColor,
-                    selected: index == _selectedIndex,
-                    selectedColor: selectedColor,
-                    selectedTileColor: selectedTileColor,
-                    onTap: () {
-                      setState(() {
-                        _selectedIndex = index;
-                      });
-                    },
-                  );
-                },
-              ),
-        floatingActionButton: widget.colorResult.color != null ? _buildFABs(isPortrait) : null,
+  /// Performs the specified action on the app bar.
+  void _onAppBarAction(BuildContext context, _AppBarActions action) {
+    switch (action) {
+      // Navigates to the Color Preview screen
+      case _AppBarActions.colorPreview:
+        // gotoColorPreviewRoute(context, widget.randomColor.color);
+        utils.navigateTo(context, ColorPreviewScreen(colorResult: widget.colorResult));
+        break;
+
+      // Opens the web browser to search for the current color
+      case _AppBarActions.colorWebSearch:
+        final String url =
+            constants.onlineSearchUrl + Uri.encodeComponent(widget.colorResult.title);
+        utils.launchUrlExternal(context, url);
+        break;
+
+      // Copies all the color information to the clipboard
+      case _AppBarActions.copyAll:
+        _copyAll();
+        break;
+
+      // Shares all the color information
+      case _AppBarActions.shareAll:
+        _shareAll();
+        break;
+    }
+  }
+
+  /// Copies the value of the item in the list that the user wants to copy.
+  Future<void> _copyItem(BuildContext context, String key, String value) async {
+    ScaffoldMessengerState messengerState = ScaffoldMessenger.of(context);
+    await Clipboard.setData(ClipboardData(text: value));
+    utils.showSnackBarForAsync(messengerState, strings.copiedSnack(value));
+  }
+
+  /// Share the value of the item in the list that the user wants to share.
+  void _shareItem(String key, String value) {
+    SharePlus.instance.share(ShareParams(text: '$key: $value'));
+  }
+
+  /// Copies all the color information to the clipboard.
+  Future<void> _copyAll() async {
+    ScaffoldMessengerState messengerState = ScaffoldMessenger.of(context);
+    await Clipboard.setData(ClipboardData(text: _infosAsString));
+    utils.showSnackBarForAsync(messengerState, strings.allInfoCopied);
+  }
+
+  /// Shares all the color information.
+  void _shareAll() async {
+    SharePlus.instance.share(ShareParams(text: _infosAsString));
+  }
+
+  /// Shares all the color information.
+  void _shareColorSwatch() async {
+    // Generate the color swatch image file name
+    final String hexCode = color_utils.toHexString(color, withHash: false);
+    final String fileName = constants.colorSwatchFileName(hexCode);
+
+    // Create the color swatch image file
+    Uint8List pngBytes = await color_utils.buildColorSwatch(color, 512, 512);
+    final XFile xFile = XFile.fromData(pngBytes, name: fileName, mimeType: 'image/png');
+
+    // Summon the platform's share sheet to share the image file
+    await SharePlus.instance.share(
+      ShareParams(
+        text: strings.shareSwatchMessage(widget.colorResult.title),
+        files: [xFile],
       ),
     );
   }
 
-  /// Builds the color information list.
-  static List<({String name, String value})> _buildInfoList(ColorResult colorResult) {
-    final List<({String name, String value})> infoList = [];
+  @override
+  Widget build(BuildContext context) {
+    return AppTransparencyGrid(
+      child: Scaffold(
+        backgroundColor: color,
 
-    // We should never have a null color here, but just in case check and return an empty list
-    if (colorResult.color == null) {
-      return infoList;
-    }
-
-    // Simply a convenience function that adds the given name/value info to the list.
-    void addInfoItem(String name, String value) => infoList.add((name: name, value: value));
-
-    final Color color = colorResult.color!;
-    if (colorResult.name != null) {
-      addInfoItem(strings.colorTitleInfo, colorResult.title);
-      addInfoItem(strings.colorNameInfo, colorResult.name!);
-    }
-    addInfoItem(strings.hexInfo, color_utils.toHexString(color));
-    addInfoItem(strings.rgbInfo, color_utils.toRGBString(color));
-    addInfoItem(strings.hslInfo, color_utils.toHSLString(color));
-
-    if (color.opacity != 1.0) {
-      addInfoItem(strings.opacityInfo, color.opacity.toStringAsFixed(3));
-    }
-    addInfoItem(strings.luminanceInfo, color.computeLuminance().toStringAsFixed(3));
-    addInfoItem(strings.brightnessInfo, describeEnum(ThemeData.estimateBrightnessForColor(color)));
-
-    return infoList;
-  }
-
-  /// Builds the three main floating action buttons for copying, sharing and searching for the
-  /// currently selected color info.
-  Widget _buildFABs(bool isPortrait) {
-    return Flex(
-      direction: isPortrait ? Axis.vertical : Axis.horizontal,
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: <Widget>[
-        FloatingActionButton(
-          heroTag: 'copyFAB',
-          onPressed: _onCopyPressed,
-          tooltip: strings.copyTooltip,
-          child: const Icon(Icons.copy),
+        // The app bar with the title and Color Preview and Color Web Search actions
+        appBar: _AppBar(
+          title: const Text(strings.colorInfoScreenTitle),
+          onAction: (action) => _onAppBarAction(context, action),
         ),
-        isPortrait ? const SizedBox(height: 16.0) : const SizedBox(width: 16.0),
-        FloatingActionButton(
-          heroTag: 'shareFAB',
-          onPressed: _onSharePressed,
-          tooltip: strings.shareTooltip,
-          child: const Icon(Icons.share),
+
+        // The body of the screen with the color information list
+        body: ColorInfoList(
+          color: color,
+          contrastColor: widget.colorResult.contrastColor,
+          infos: _infos,
+          onCopyPressed: (key, value) => _copyItem(context, key, value),
+          onSharePressed: (key, value) => _shareItem(key, value),
         ),
-      ],
+
+        // The Share Swatch floating action button
+        floatingActionButton: FloatingActionButton.extended(
+          icon: const Icon(Icons.share_outlined),
+          label: const Text(strings.shareSwatchFAB),
+          onPressed: _shareColorSwatch,
+        ),
+      ),
     );
   }
 }
 
-/// The app bar of the Color Information screen.
-///
-/// Displays the screen title and the search button.
+/// Enum that defines the actions of the app bar.
+enum _AppBarActions { colorPreview, colorWebSearch, copyAll, shareAll }
+
+/// The app bar of the Color Info screen.
 class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   const _AppBar({
     super.key, // ignore: unused_element_parameter
-    this.onSearchPressed,
+    required this.title,
+    required this.onAction,
   });
 
-  /// Called when the user taps the search action button.
-  final void Function()? onSearchPressed;
+  /// The primary widget displayed in the app bar.
+  final Widget? title;
+
+  /// The callback that is called when an app bar action is pressed.
+  final void Function(_AppBarActions action) onAction;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Text(strings.colorInfoScreenTitle),
+      title: title,
+
+      // The common operations displayed in this app bar
       actions: <Widget>[
+        // The Color Preview action
         IconButton(
-          icon: const Icon(Icons.search_outlined),
-          tooltip: strings.searchTooltip,
-          onPressed: onSearchPressed,
+          icon: const Icon(Icons.remove_red_eye_outlined),
+          tooltip: strings.colorPreviewAction,
+          onPressed: () => onAction(_AppBarActions.colorPreview),
+        ),
+
+        // Add the overflow menu
+        PopupMenuButton<_AppBarActions>(
+          onSelected: onAction,
+          itemBuilder: (BuildContext context) => <PopupMenuEntry<_AppBarActions>>[
+            // Add the Copy All action to the overflow menu
+            const PopupMenuItem<_AppBarActions>(
+              value: _AppBarActions.copyAll,
+              child: Text(strings.copyAllAction),
+            ),
+
+            // Add the Share All action to the overflow menu
+            const PopupMenuItem<_AppBarActions>(
+              value: _AppBarActions.shareAll,
+              child: Text(strings.shareAllAction),
+            ),
+
+            // Add the Color Web Search action to the overflow menu
+            const PopupMenuItem<_AppBarActions>(
+              value: _AppBarActions.colorWebSearch,
+              child: Text(strings.colorWebSearchAction),
+            ),
+          ],
         ),
       ],
     );
