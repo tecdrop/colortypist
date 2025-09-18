@@ -2,27 +2,8 @@
 // Use of this source code is governed by an MIT-style license that can be found
 // in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
-/// Application wide constants: routes, urls, etc.
+/// Application wide constants: urls, etc.
 library;
-
-// -----------------------------------------------------------------------------------------------
-// App routes
-// -----------------------------------------------------------------------------------------------
-
-/// This is the default route of the app. It opens the "Type Colors" typist screen.
-const String typeColorRoute = '/';
-
-/// The name of the route for the Preview Color screen.
-const String previewColorRoute = '/preview-color';
-
-/// The name of the route for the Color Information screen.
-const String colorInfoRoute = '/color-info';
-
-/// The name of the route for the Color Reference screen.
-const String colorReferenceRoute = '/color-reference';
-
-/// The name of the route for the Settings screen.
-const String settingsRoute = '/settings';
 
 // -----------------------------------------------------------------------------------------------
 // App urls

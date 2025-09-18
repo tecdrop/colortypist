@@ -71,7 +71,6 @@ class _ColorInfoScreenState extends State<ColorInfoScreen> {
     switch (action) {
       // Navigates to the Color Preview screen
       case _AppBarActions.colorPreview:
-        // gotoColorPreviewRoute(context, widget.randomColor.color);
         utils.navigateTo(context, ColorPreviewScreen(colorResult: widget.colorResult));
         break;
 

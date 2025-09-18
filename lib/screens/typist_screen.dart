@@ -15,6 +15,10 @@ import '../widgets/app_drawer.dart';
 import '../widgets/app_transparency_grid.dart';
 import '../widgets/color_result_title.dart';
 import '../widgets/typist_text_field.dart';
+import 'color_info_screen.dart';
+import 'color_preview_screen.dart';
+import 'color_reference_screen.dart';
+import 'settings_screen.dart';
 
 /// The Typist screen.
 ///
@@ -80,13 +84,13 @@ class _TypistScreenState extends State<TypistScreen> {
 
   /// Navigates to the Color Info screen to display information about the current color.
   void _gotoColorInfoScreen() {
-    Navigator.pushNamed(context, constants.colorInfoRoute, arguments: _colorResult);
+    utils.navigateTo(context, ColorInfoScreen(colorResult: _colorResult));
   }
 
   /// Navigates to the Color Reference screen and updates the text in the typist text field with the
   /// color name selected from the Color Reference screen.
   void _gotoColorReferenceScreen() async {
-    await Navigator.pushNamed(context, constants.colorReferenceRoute);
+    await utils.navigateTo(context, const ColorReferenceScreen());
     _textFieldController.text = settings.typeColorText;
   }
 
@@ -124,10 +128,9 @@ class _TypistScreenState extends State<TypistScreen> {
         );
         break;
 
-      // Navigate to the Type Color screen by replacing the current screen
+      // We are already on the Type Color screen, just close the drawer
       case AppDrawerItems.typeColor:
         Navigator.pop(context);
-        Navigator.pushReplacementNamed(context, constants.typeColorRoute);
         break;
 
       // Navigate to the Color Reference screen
@@ -139,7 +142,7 @@ class _TypistScreenState extends State<TypistScreen> {
       // Navigate to the Preview Color screen
       case AppDrawerItems.previewColor:
         Navigator.pop(context);
-        Navigator.pushNamed(context, constants.previewColorRoute, arguments: _colorResult);
+        await utils.navigateTo(context, ColorPreviewScreen(colorResult: _colorResult));
         break;
 
       // Navigate to the Color Information screen
@@ -151,7 +154,7 @@ class _TypistScreenState extends State<TypistScreen> {
       // Navigate to the Settings screen
       case AppDrawerItems.settings:
         Navigator.pop(context);
-        await Navigator.pushNamed(context, constants.settingsRoute);
+        await utils.navigateTo(context, const SettingsScreen());
 
         // Reparse the text after returning from the Settings screen as the user may have changed
         // the color name set
