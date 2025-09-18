@@ -24,16 +24,12 @@ ThemeData appTheme(Brightness brightness) {
       primary: lightWhiteDarkBlack,
       onPrimary: lightBlackDarkWhite,
 
-      // So far used for the app bar of the screens that have a color background (dark theme only)
-      // (The AppBar uses the overall theme's ColorScheme.primary if Brightness.light, and
-      // ColorScheme.surface if Brightness.dark)
+      // So far used for the background of screens that don't have a color background (the Color
+      // Reference or the Settings screen) and for the app bar of the screens that have a color
+      // background (dark theme only) (The AppBar uses the overall theme's ColorScheme.primary if
+      // Brightness.light, and ColorScheme.surface if Brightness.dark)
       surface: lightWhiteDarkBlack,
       onSurface: lightBlackDarkWhite,
-
-      // So far used for the background of screens that don't have a color background (the Color
-      // Reference or the Settings screen)
-      background: lightWhiteDarkBlack,
-      onBackground: lightBlackDarkWhite,
 
       // So far used for floating action buttons and for the active color of the radio tiles in the Settings screen
       secondary: lightBlackDarkWhite,

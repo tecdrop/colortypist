@@ -39,38 +39,39 @@ class _SettingsScreenState extends State<SettingsScreen> {
       ),
 
       // The list of available settings that can be changed by the user
-      body: ListView(
-        children: <Widget>[
-          const SizedBox(height: 16.0),
-          ListTile(
-            title: Text(strings.typeColorSectionTitle, style: theme.subtitleStyle(context)),
-            leading: const SizedBox(),
-          ),
-          RadioListTile<NamedColorType>(
-            isThreeLine: true,
-            value: NamedColorType.basic,
-            groupValue: settings.namedColorType,
-            title: Text(strings.namedColorTypeRadioTitle[NamedColorType.basic]!),
-            subtitle: Text(strings.namedColorTypeRadioSubtitle[NamedColorType.basic]!),
-            onChanged: _onStandardSetChanged,
-          ),
-          RadioListTile<NamedColorType>(
-            isThreeLine: true,
-            value: NamedColorType.standard,
-            groupValue: settings.namedColorType,
-            title: Text(strings.namedColorTypeRadioTitle[NamedColorType.standard]!),
-            subtitle: Text(strings.namedColorTypeRadioSubtitle[NamedColorType.standard]!),
-            onChanged: _onStandardSetChanged,
-          ),
-          RadioListTile<NamedColorType>(
-            isThreeLine: true,
-            value: NamedColorType.extended,
-            groupValue: settings.namedColorType,
-            title: Text(strings.namedColorTypeRadioTitle[NamedColorType.extended]!),
-            subtitle: Text(strings.namedColorTypeRadioSubtitle[NamedColorType.extended]!),
-            onChanged: _onStandardSetChanged,
-          ),
-        ],
+      body: RadioGroup<NamedColorType>(
+        groupValue: settings.namedColorType,
+        onChanged: _onStandardSetChanged,
+        child: ListView(
+          children: <Widget>[
+            const SizedBox(height: 16.0),
+            ListTile(
+              title: Text(strings.typeColorSectionTitle, style: theme.subtitleStyle(context)),
+              leading: const SizedBox(),
+            ),
+            RadioListTile<NamedColorType>(
+              activeColor: Theme.of(context).colorScheme.secondary,
+              isThreeLine: true,
+              value: NamedColorType.basic,
+              title: Text(strings.namedColorTypeRadioTitle[NamedColorType.basic]!),
+              subtitle: Text(strings.namedColorTypeRadioSubtitle[NamedColorType.basic]!),
+            ),
+            RadioListTile<NamedColorType>(
+              activeColor: Theme.of(context).colorScheme.secondary,
+              isThreeLine: true,
+              value: NamedColorType.standard,
+              title: Text(strings.namedColorTypeRadioTitle[NamedColorType.standard]!),
+              subtitle: Text(strings.namedColorTypeRadioSubtitle[NamedColorType.standard]!),
+            ),
+            RadioListTile<NamedColorType>(
+              activeColor: Theme.of(context).colorScheme.secondary,
+              isThreeLine: true,
+              value: NamedColorType.extended,
+              title: Text(strings.namedColorTypeRadioTitle[NamedColorType.extended]!),
+              subtitle: Text(strings.namedColorTypeRadioSubtitle[NamedColorType.extended]!),
+            ),
+          ],
+        ),
       ),
     );
   }

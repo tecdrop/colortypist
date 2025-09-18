@@ -111,7 +111,7 @@ class _ColorReferenceItem extends StatelessWidget {
             // Display the color swatch.
             Expanded(
               flex: 5,
-              child: color.alpha != 255
+              child: color.a != 1.0
                   ? AppTransparencyGrid(child: Container(color: color))
                   : Container(color: color),
             ),

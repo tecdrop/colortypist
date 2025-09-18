@@ -225,10 +225,10 @@ enum _AppBarActions {
 /// Displays the color result in the title, and allows the user to perform common actions.
 class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   const _AppBar({
-    Key? key,
+    super.key, // ignore: unused_element_parameter
     required this.colorResult,
     this.onAppBarAction,
-  }) : super(key: key);
+  });
 
   /// The color result to display in the app bar title.
   final ColorResult colorResult;

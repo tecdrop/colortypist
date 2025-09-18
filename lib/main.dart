@@ -31,7 +31,7 @@ Future<void> main() async {
 ///
 /// Shows the Typist screen in Type Color mode as the initial route.
 class ColortypistApp extends StatelessWidget {
-  const ColortypistApp({Key? key}) : super(key: key);
+  const ColortypistApp({super.key});
 
   @override
   Widget build(BuildContext context) {
