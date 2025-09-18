@@ -1,10 +1,11 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 /// User interface string constants.
 ///
 /// These are texts that are displayed to the user and can be localized in future versions.
+library;
 
 import 'package:colortypist/models/enums.dart';
 
@@ -22,6 +23,7 @@ const String noValidColor = 'No valid color!';
 const String copied = 'copied to clipboard';
 const String copyFail = 'Copy to clipboard failed:';
 const String openFail = 'Failed to open';
+String copiedSnack(String value) => '$value copied to clipboard';
 
 const String noColorHint = 'Type a color';
 
@@ -63,19 +65,29 @@ const String referenceActionTooltip = 'Color reference';
 // -----------------------------------------------------------------------------------------------
 
 const String colorInfoScreenTitle = 'Color Information';
+const String colorPreviewAction = 'Preview color';
+const String copyAllAction = 'Copy all';
+const String shareAllAction = 'Share all';
+const String colorWebSearchAction = 'More on the web';
+
+const String shareSwatchFAB = 'Share swatch';
+String shareSwatchMessage(String colorTitle) =>
+    '$colorTitle, a color typed in Colortypist 🎨 https://colortypist.tecdrop.com/';
 
 const String colorNameInfo = 'Name';
-const String colorTitleInfo = 'Name & code';
-const String hexInfo = 'Hex triplet';
+const String colorTitleInfo = 'Name & Code';
+const String hexInfo = 'Hex code';
 const String rgbInfo = 'RGB';
+const String hsvInfo = 'HSV';
 const String hslInfo = 'HSL';
+const String decimalInfo = 'Decimal';
 const String opacityInfo = 'Opacity';
 const String luminanceInfo = 'Luminance';
 const String brightnessInfo = 'Brightness';
 
-const String copyTooltip = 'Copy to clipboard';
-const String shareTooltip = 'Share';
-const String searchTooltip = 'Search color on the Internet';
+const String itemCopyTooltip = 'Copy value';
+const String itemShareTooltip = 'Share value';
+const String allInfoCopied = 'All color information copied to clipboard';
 
 // -----------------------------------------------------------------------------------------------
 // Color Reference Screen

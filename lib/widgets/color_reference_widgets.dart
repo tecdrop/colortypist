@@ -1,6 +1,6 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 import 'package:flutter/material.dart';
 
@@ -80,8 +80,7 @@ class ColorReferenceList extends StatelessWidget {
 /// A color reference item that displays a color swatch, a text and an optional color code.
 class _ColorReferenceItem extends StatelessWidget {
   const _ColorReferenceItem({
-    // ignore: unused_element
-    super.key,
+    super.key, // ignore: unused_element_parameter
     required this.color,
     required this.text,
     this.showColorCode = true,
@@ -112,7 +111,7 @@ class _ColorReferenceItem extends StatelessWidget {
             // Display the color swatch.
             Expanded(
               flex: 5,
-              child: color.alpha != 255
+              child: color.a != 1.0
                   ? AppTransparencyGrid(child: Container(color: color))
                   : Container(color: color),
             ),
@@ -128,8 +127,10 @@ class _ColorReferenceItem extends StatelessWidget {
                   Text(text, style: theme.listTileTitleStyle(context)),
                   if (showColorCode) const SizedBox(height: 4.0),
                   if (showColorCode)
-                    Text(color_utils.toHexString(color),
-                        style: theme.listTileSubtitleStyle(context)),
+                    Text(
+                      color_utils.toHexString(color),
+                      style: theme.listTileSubtitleStyle(context),
+                    ),
                 ],
               ),
             ),

@@ -1,8 +1,6 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
-
-// cspell:ignore autofocus
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 import 'package:flutter/material.dart';
 
@@ -25,7 +23,7 @@ class TypistTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // An opinionated minimum width for a large screen.
-    final bool isLargeScreen = MediaQuery.of(context).size.width > 1280;
+    final bool isLargeScreen = MediaQuery.sizeOf(context).width > 1280;
 
     // A simple underline border.
     final InputBorder border = UnderlineInputBorder(

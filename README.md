@@ -9,7 +9,7 @@
 
 Imagine this: you open an app and type a color name or code. Instantly, your screen is filled with that color. It's like magic, but it's not. It's Colortypist.
 
-Colortypist makes exploring, learning, and experimenting with colors as easy as typing. Choose from a variety of color formats like color names, hex triplets, RGB, and HSL. The standard set of colors includes the 148 web color names, but the color party doesn't stop there. You can opt for more in the settings.
+Colortypist makes exploring, learning, and experimenting with colors as easy as typing. Choose from a variety of color formats like color names, hex codes, RGB, and HSL. The standard set of colors includes the 148 web color names, but the color party doesn't stop there. You can opt for more in the settings.
 
 Ever wondered what makes up your favorite color? Dive into the Color Information screen and get all the details. You'll see your color in different formats, including its luminance and brightness. Sharing your color findings with friends is just a tap away.
 

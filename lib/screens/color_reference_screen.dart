@@ -1,6 +1,6 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 import 'package:flutter/material.dart';
 
@@ -39,8 +39,8 @@ class ColorReferenceScreen extends StatelessWidget {
           namedColorList: settings.namedColorType == NamedColorType.basic
               ? basic_colors.colorMap
               : settings.namedColorType == NamedColorType.standard
-                  ? standard_colors.colorMap
-                  : extended_colors.colorMap,
+              ? standard_colors.colorMap
+              : extended_colors.colorMap,
           namedColorListTitle: strings.namedColorTypeTitle[settings.namedColorType]!,
           onItemTap: (text) {
             settings.typeColorText = text;
@@ -54,8 +54,9 @@ class ColorReferenceScreen extends StatelessWidget {
 
 /// A simple app bar with just a title and subtitle.
 class _AppBar extends StatelessWidget implements PreferredSizeWidget {
-  // ignore: unused_element
-  const _AppBar({super.key});
+  const _AppBar({
+    super.key, // ignore: unused_element_parameter
+  });
 
   @override
   Widget build(BuildContext context) {

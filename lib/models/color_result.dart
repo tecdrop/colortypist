@@ -1,6 +1,6 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 import 'package:flutter/material.dart';
 
@@ -17,9 +17,9 @@ class ColorResult {
     this.color,
     required Color primaryColor,
     this.name,
-  }) : contrastColor = color_utils.contrastOf(
-          Color.alphaBlend(color ?? primaryColor, primaryColor),
-        );
+  }) : contrastColor = color_utils.contrastBWColorOf(
+         Color.alphaBlend(color ?? primaryColor, primaryColor),
+       );
 
   /// The color value. Can be null if the color parsing operation has failed.
   final Color? color;

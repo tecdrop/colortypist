@@ -1,27 +1,9 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
-/// Application wide constants: routes, urls, etc.
-
-// -----------------------------------------------------------------------------------------------
-// App routes
-// -----------------------------------------------------------------------------------------------
-
-/// This is the default route of the app. It opens the "Type Colors" typist screen.
-const String typeColorRoute = '/';
-
-/// The name of the route for the Preview Color screen.
-const String previewColorRoute = '/preview-color';
-
-/// The name of the route for the Color Information screen.
-const String colorInfoRoute = '/color-info';
-
-/// The name of the route for the Color Reference screen.
-const String colorReferenceRoute = '/color-reference';
-
-/// The name of the route for the Settings screen.
-const String settingsRoute = '/settings';
+/// Application wide constants: urls, etc.
+library;
 
 // -----------------------------------------------------------------------------------------------
 // App urls
@@ -46,3 +28,10 @@ const String viewSourceUrl = 'https://github.com/tecdrop/colortypist';
 
 /// The url that is used to search color information on the web.
 const String onlineSearchUrl = 'https://www.google.com/search?q=';
+
+// -----------------------------------------------------------------------------------------------
+// Other constants
+// -----------------------------------------------------------------------------------------------
+
+/// The color swatch image file name for a given hex code.
+String colorSwatchFileName(String hexCode) => 'colortypist_${hexCode}_color_swatch.png';

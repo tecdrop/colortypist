@@ -1,8 +1,9 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 /// Various utility functions.
+library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,26 @@ import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../common/strings.dart' as strings;
+
+/// Formats the given integer value to a string with thousands separators.
+///
+/// The separators are spaces, as per the ISU standard.
+String intToCommaSeparatedString(int value) {
+  return value.toString().replaceAllMapped(
+    RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'),
+    (Match m) => '${m[1]} ',
+  );
+}
+
+/// Navigates to the specified [screen] and returns the result.
+Future<T?> navigateTo<T>(BuildContext context, Widget screen) async {
+  return await navigatorTo<T>(Navigator.of(context), screen);
+}
+
+/// Navigates to the specified [screen] and returns the result.
+Future<T?> navigatorTo<T>(NavigatorState navigator, Widget screen) async {
+  return await navigator.push(MaterialPageRoute<T>(builder: (context) => screen));
+}
 
 /// Shows a [SnackBar] with the specified [text] at the bottom of the specified scaffold.
 void showSnackBar(BuildContext context, String text) {

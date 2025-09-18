@@ -1,12 +1,9 @@
-// Copyright 2020-2023 Tecdrop. All rights reserved.
-// Use of this source code is governed by an MIT-style license that can be
-// found in the LICENSE file.
-
-// cspell:ignore fullscreen
+// Copyright 2020-2025 Tecdrop SRL. All rights reserved.
+// Use of this source code is governed by an MIT-style license that can be found
+// in the LICENSE file or at https://www.tecdrop.com/colortypist/license/.
 
 import 'package:flutter/material.dart';
 
-import '../common/custom_icons.dart' as custom_icons;
 import '../common/strings.dart' as strings;
 import '../models/color_result.dart';
 import 'app_transparency_grid.dart';
@@ -28,10 +25,10 @@ enum AppDrawerItems {
 class AppDrawer extends StatelessWidget {
   /// Creates a new instance of the app drawer.
   const AppDrawer({
-    Key? key,
+    super.key,
     required this.colorResult,
     this.onItemTap,
-  }) : super(key: key);
+  });
 
   /// The current color result to display in the app drawer header.
   ///
@@ -55,7 +52,7 @@ class AppDrawer extends StatelessWidget {
           // The Set Color Wallpaper drawer item
           ListTile(
             contentPadding: const EdgeInsets.all(16.0),
-            tileColor: Theme.of(context).colorScheme.onPrimary.withOpacity(0.075),
+            tileColor: Theme.of(context).colorScheme.onPrimary.withValues(alpha: 0.075),
             leading: const Icon(Icons.wallpaper),
             title: const Text(strings.setWallpaperDrawerTitle),
             subtitle: const Text(strings.setWallpaperDrawerSubtitle),
@@ -118,23 +115,23 @@ class AppDrawer extends StatelessWidget {
             item: AppDrawerItems.help,
           ),
 
-          // The Rate App drawer item (currently shown only on Android)
-          if (Theme.of(context).platform == TargetPlatform.android)
-            _buildItem(
-              context,
-              icon: Icons.star_rate_outlined,
-              title: strings.rateAppDrawer,
-              item: AppDrawerItems.rateApp,
-            ),
-
           // The Star on GitHub drawer item
           _buildItem(
             context,
-            icon: custom_icons.github,
+            icon: Icons.star,
             title: strings.starOnGitHubTitle,
             subtitle: strings.starOnGitHubSubtitle,
             item: AppDrawerItems.viewSource,
           ),
+
+          // The Rate App drawer item (currently shown only on Android)
+          if (Theme.of(context).platform == TargetPlatform.android)
+            _buildItem(
+              context,
+              icon: Icons.thumb_up,
+              title: strings.rateAppDrawer,
+              item: AppDrawerItems.rateApp,
+            ),
         ],
       ),
     );
@@ -162,10 +159,10 @@ class AppDrawer extends StatelessWidget {
 /// The header of the app drawer.
 class _AppDrawerHeader extends StatelessWidget {
   const _AppDrawerHeader({
-    Key? key,
+    super.key, // ignore: unused_element_parameter
     required this.colorResult,
     required this.title,
-  }) : super(key: key);
+  });
 
   /// The current color result to display as the background of the drawer header.
   final ColorResult colorResult;
@@ -188,8 +185,8 @@ class _AppDrawerHeader extends StatelessWidget {
           child: Text(
             title,
             style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: colorResult.contrastColor,
-                ),
+              color: colorResult.contrastColor,
+            ),
           ),
         ),
       ),
