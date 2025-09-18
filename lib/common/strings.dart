@@ -76,11 +76,12 @@ String shareSwatchMessage(String colorTitle) =>
 
 const String colorNameInfo = 'Name';
 const String colorTitleInfo = 'Name & Code';
-const String hexInfo = 'Hex triplet';
+const String hexInfo = 'Hex code';
 const String rgbInfo = 'RGB';
 const String hsvInfo = 'HSV';
 const String hslInfo = 'HSL';
 const String decimalInfo = 'Decimal';
+const String opacityInfo = 'Opacity';
 const String luminanceInfo = 'Luminance';
 const String brightnessInfo = 'Brightness';
 

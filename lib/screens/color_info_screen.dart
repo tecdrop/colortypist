@@ -43,8 +43,8 @@ class _ColorInfoScreenState extends State<ColorInfoScreen> {
   void initState() {
     super.initState();
 
-    // We should never get here with a null color, but just in case use the primary color
-    color = widget.colorResult.color ?? Theme.of(context).colorScheme.primary;
+    // We should never get here with a null color, but just in case use black as a fallback
+    color = widget.colorResult.color ?? Colors.black;
 
     // Prepare the list of color information to display
     _infos = [
@@ -57,6 +57,7 @@ class _ColorInfoScreenState extends State<ColorInfoScreen> {
       (key: strings.hsvInfo, value: color_utils.toHSVString(color)),
       (key: strings.hslInfo, value: color_utils.toHSLString(color)),
       (key: strings.decimalInfo, value: color_utils.toDecimalString(color)),
+      (key: strings.opacityInfo, value: color_utils.opacityString(color)),
       (key: strings.luminanceInfo, value: color_utils.luminanceString(color)),
       (key: strings.brightnessInfo, value: color_utils.brightnessString(color)),
     ];

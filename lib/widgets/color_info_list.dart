@@ -36,7 +36,7 @@ class ColorInfoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
+    final double width = MediaQuery.sizeOf(context).width;
 
     return DividerTheme(
       // Use a hairline divider between the list items

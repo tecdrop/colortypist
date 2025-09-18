@@ -23,7 +23,7 @@ class TypistTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // An opinionated minimum width for a large screen.
-    final bool isLargeScreen = MediaQuery.of(context).size.width > 1280;
+    final bool isLargeScreen = MediaQuery.sizeOf(context).width > 1280;
 
     // A simple underline border.
     final InputBorder border = UnderlineInputBorder(

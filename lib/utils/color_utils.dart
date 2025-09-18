@@ -84,6 +84,11 @@ String toDecimalString(Color color) {
   return utils.intToCommaSeparatedString(color.withAlpha(0).toARGB32());
 }
 
+/// Returns the string representation of the opacity (alpha channel) of the given [Color].
+String opacityString(Color color) {
+  return color.a.toStringAsFixed(2);
+}
+
 /// Returns the string representation of the relative luminance of the given [Color].
 String luminanceString(Color color) {
   return color.computeLuminance().toStringAsFixed(5);
